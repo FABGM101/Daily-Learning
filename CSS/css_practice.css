@@ -1,9 +1,18 @@
 fieldset{
+    display: flexbox;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     background-color: rgba(255, 255, 255, 0.3);
-    padding: 20px;
     border-radius: 2vh;
     border-style: groove;
-    border-color: black;
+    border-color: rgba(177, 171, 171, 0.6);
+}
+
+form{
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 body{
@@ -15,34 +24,87 @@ body{
     
     background-image: url('rugged-paper.jpg');
     background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    
 
     font-family: 'UnifrakturMaguntia', cursive;
     font-size: 16px;
 }
+.div-welcome{
+    font-size: 18px;
+    color: rgba(255, 255, 255, 0.966);
+    text-shadow: 2px 2px 5px rgb(2, 99, 2), 0 0 1em green, 0 0 0.5em green;
+    border-radius: 5px;
+    text-align: center;
+}
+
+/* Magic (submit) button */
+.magic-button{
+    transition: 0.5s;
+    background-color: rgba(88, 90, 84, 0.35);
+    border-style: solid;
+    box-shadow: 0px 0px 15px rgba(10, 255, 150, 0.5);
+}
+.magic-button:hover{
+    background-color: rgba(88, 90, 84, 0.5);
+    border-style: groove;
+    box-shadow: 0px 0px 15px rgba(10, 255, 150, 1);
+    text-shadow: 0px 0px 5px rgba(90, 235, 6, 1);
+}
+
+
+/*Goblin (reset) button*/
+.goblin-button{
+    transition: 0.5s;
+    background-color: rgba(88, 90, 84, 0.35);
+    border-style: solid;
+    box-shadow: 0px 0px 15px rgba(88, 90, 84, 0.5);
+}
+.goblin-button:hover{
+    background-color: rgba(88, 90, 84, 0.5);
+    border-style: groove;
+    box-shadow: 0px 0px 15px rgb(117, 2, 1);
+    text-shadow: 0px 0px 5px rgba(231, 6, 6, 1);
+}
+
 button{
+    font-family: 'UnifrakturMaguntia', cursive;
+    font-size: 16px;
+    text-shadow: 2px 2px rgba(255, 255, 255, 0.6);
     box-shadow: 5px 5px 10px rgba(234, 210, 158, 1);
     cursor: pointer;
     transition: 0.3s;
     border-radius: 10px;
     border-color: rgba(255, 255, 255, 0.5);
 }
+
 legend{
-    padding-left: 20px;
-    padding-right: 20px;
+    padding-left: 43px;
+    padding-right: 30px;
     text-shadow: 0.5px 0.5px white;
     color: black;
     border-radius: 5px;
-    border-color: black;
+    border-color: rgba(177, 171, 171, 0.6);
     border-style: outset;  
     border-width: 0.06cm;
     font-weight: bold; 
 }
+
 label{
     text-shadow: 0.5px 0.5px white;
     font-weight: bold;
 }
+
 input{
     vertical-align: 0 auto;
+    border-radius: 5px;
+    background-color: rgba(177, 171, 171, 0.3);
+    border-style: inset;
+    border-color: rgba(177, 171, 171, 0.4);
+    font-family: "Petit Formal Script", cursive;
+    font-weight: bold;
+    font-style: normal;
 }
 
 .campo-flex{
@@ -50,4 +112,10 @@ input{
     flex-direction: column;
     gap: 10px;
     margin-bottom: 25px;
+}
+
+.petit-formal-script-regular {
+  font-family: "Petit Formal Script", cursive;
+  font-weight: 400;
+  font-style: normal;
 }

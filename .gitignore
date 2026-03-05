@@ -4,3 +4,4 @@ build/
 PostgreSql/
 *.yaml
 *.sql
+*.png

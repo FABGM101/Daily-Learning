@@ -2,13 +2,18 @@
 <html>
     <head>
         <link href="https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&display=swap" rel="stylesheet">
+       
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Petit+Formal+Script&display=swap" rel="stylesheet">
+        
         <link rel="stylesheet" href="../../CSS/css_practice.css">
 
     </head>
     <body>
         <form>
             <fieldset class="campo-flex">
-
+                <div class="div-welcome" id="welcome"></div>
                 <legend>Registro de aventureiro</legend>
                 <label for="name">Nome do herói</label>
                 <input type="text" id="name">
@@ -19,11 +24,12 @@
                 <label for="pass">Senha ultra-secreta</label>
                 <input type="password" id="pass" placeholder="extremamente secreta">
 
-                <button type="submit">Entrar na guilda</button><button type="reset">Eu sou um goblin!</button>
+                <button class="magic-button" type="submit">Entrar na guilda</button><button class="goblin-button" type="reset">Eu sou um goblin!</button>
         
             </fieldset>
         </form>
-        <link href="../../JS/main.js">
+    
+        <script src="../../JS/main.js"></script>
     </body>
 
 </html>
