@@ -1,0 +1,53 @@
+fieldset{
+    background-color: rgba(255, 255, 255, 0.3);
+    padding: 20px;
+    border-radius: 2vh;
+    border-style: groove;
+    border-color: black;
+}
+
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    
+    background-image: url('rugged-paper.jpg');
+    background-size: cover;
+
+    font-family: 'UnifrakturMaguntia', cursive;
+    font-size: 16px;
+}
+button{
+    box-shadow: 5px 5px 10px rgba(234, 210, 158, 1);
+    cursor: pointer;
+    transition: 0.3s;
+    border-radius: 10px;
+    border-color: rgba(255, 255, 255, 0.5);
+}
+legend{
+    padding-left: 20px;
+    padding-right: 20px;
+    text-shadow: 0.5px 0.5px white;
+    color: black;
+    border-radius: 5px;
+    border-color: black;
+    border-style: outset;  
+    border-width: 0.06cm;
+    font-weight: bold; 
+}
+label{
+    text-shadow: 0.5px 0.5px white;
+    font-weight: bold;
+}
+input{
+    vertical-align: 0 auto;
+}
+
+.campo-flex{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 25px;
+}

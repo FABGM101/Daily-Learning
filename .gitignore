@@ -1,3 +1,6 @@
 *.spec
 dist/
 build/
+PostgreSql/
+*.yaml
+*.sql

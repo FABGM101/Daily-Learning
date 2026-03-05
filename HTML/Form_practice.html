@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="../CSS/css_practice.css">
+    </head>
+    <body>
+        <form action="/pagina-processados-do-form" method="post">
+            <fieldset>
+            
+                <legend>Dados Gerais</legend>
+
+                <label for="nome">Nome:</label>
+                <input type="text" minlength="3" id="nome" required>
+                <br>
+
+                <label for="data_nascimento">Data de Nascimento</label>
+                <input type="text" id="data_nascimento">
+                <br>
+                
+                <label for="cpf">CPF</label>
+                <input type="cpf" minlength="11" id="cpf">
+            
+            </fieldset>
+            <fieldset>
+                <legend>Endereço</legend>
+                <label for="tipo_endereço">Tipo</label>
+                <select id="tipo_endereço">
+                    <option value="">Selecione</option>
+                    <option value="">Rua</option>
+                    <option value="">Estrada</option>
+                    <option value="">Rodovia</option>
+                    <option value="">Outros</option>
+                </select>
+                <label for="logradouro_endereco">Logradouro:</label>
+                <input type="text" id="logradouro_endereco" />
+                <label for="numero_endereco">Número</label>
+                <input type="text" id="numero_endereco" />
+                <label for="complemento">Complemento</label>
+                <input type="text" id="complemento" />
+            </fieldset>
+            <fieldset>
+                <legend>Fale conosco</legend>
+                <textarea type="text" id="msg" placeholder="Escreva sua mensagem"></textarea>
+            </fieldset>
+            <fieldset>
+                <button type="submit">Enviar sua mensagem</button>
+                <button type="reset">Limpar o formulário</button>
+            
+            
+            </fieldset>
+
+
+
+        </form>
+    </body>
+</html>
