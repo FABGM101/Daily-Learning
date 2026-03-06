@@ -1,26 +1,52 @@
 fieldset{
-    display: flexbox;
+    display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    min-height: auto;
     background-color: rgba(255, 255, 255, 0.3);
     border-radius: 2vh;
     border-style: groove;
     border-color: rgba(177, 171, 171, 0.6);
+    margin: 0 auto;
+}
+.seal-msg{
+    display: none;
+    position: fixed;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    z-index: 101;
+    font-family:'UnifrakturMaguntia', cursive;
+    font-size: 30px;
+    font-weight: bold;
+    color: rgba(0, 0, 0, 0.966);
+    text-shadow: 0px 0px 5px rgba(255, 215, 0, 0.9);
+    margin-bottom: 20px;
+
+}
+.seal{
+    background-image: url(Seal.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 250px;
+    height: 250px;
+    display: none;
+    position: fixed;
+    z-index: 100;
 }
 
 form{
-    display: flex;
-    justify-content: center;
-    align-items: center;
+
 }
 
 body{
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 100vh;
-    margin: 0;
+    min-height: 100vh;
+    margin: 0 auto;
     
     background-image: url('rugged-paper.jpg');
     background-size: cover;
@@ -31,12 +57,58 @@ body{
     font-family: 'UnifrakturMaguntia', cursive;
     font-size: 16px;
 }
-.div-welcome{
-    font-size: 18px;
+/*.div-welcome{
+    font-family: "Petit Formal Script", cursive;
+    font-weight: bold;
+    font-size: 16px;
     color: rgba(255, 255, 255, 0.966);
-    text-shadow: 2px 2px 5px rgb(2, 99, 2), 0 0 1em green, 0 0 0.5em green;
+    text-shadow: 2px 2px 10px rgb(2, 99, 2), 0 0 1em green, 0 0 0.5em green;
     border-radius: 5px;
     text-align: center;
+}*/
+
+.logout{
+    display: none;
+    position: fixed;
+    bottom: 30%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    z-index: 101;
+    font-family:'UnifrakturMaguntia', cursive;
+    font-size: 35px;
+    font-weight: bold;
+    color: rgba(0, 0, 0, 0.966);
+    text-shadow: 0px 0px 5px rgba(255, 0, 0, 0.9);
+    background-color: transparent;
+    border-color: transparent;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.success-msg{
+    font-family: "Petit Formal Script", cursive;
+    font-weight: bold;
+    font-size: 16px;
+    color: rgba(255, 255, 255, 0.966);
+    text-shadow: 2px 2px 10px rgb(2, 99, 2), 0 0 1em green, 0 0 0.5em green;
+    border-radius: 5px;
+    text-align: center;
+    margin-bottom: 20px;
+    width: 100%;
+}
+.error-msg{
+    font-family: "Petit Formal Script", cursive;
+    font-weight: bold;
+    font-size: 16px;
+    color: rgba(255, 255, 255, 0.966);
+    text-shadow: 2px 2px 10px rgb(99, 2, 2), 0 0 1em rgb(128, 0, 0), 0 0 0.5em rgb(128, 0, 0);
+    border-radius: 5px;
+    text-align: center;
+    margin-bottom: 20px;
+    width: 100%;
+}
+.vanish{
+    display: none;
 }
 
 /* Magic (submit) button */
