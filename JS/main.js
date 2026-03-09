@@ -38,7 +38,34 @@ selobtn.addEventListener('click', function(){
     
     MuralArea.innerHTML = "<h3>Mural de missões disponíveis:</h3>";
     TaskMural.forEach(function(Task){
-        MuralArea.innerHTML += `<p class="Missions" data-text="🪶${Task}">🪶${Task}</p>`;
+        const NewParagraph = document.createElement('p');
+        
+        NewParagraph.textContent = `🪶${Task}`;
+        NewParagraph.classList.add('Missions');
+        NewParagraph.dataset.text = `🪶${Task}`;
+
+        NewParagraph.addEventListener('click', function(){
+
+            if(NewParagraph.classList.contains('mission-acquired')){
+
+                NewParagraph.classList.add('revert-acquired');
+
+                setTimeout(function(){
+                    NewParagraph.textContent = `🪶${Task}`;
+                    NewParagraph.classList.remove('revert-acquired');
+                    NewParagraph.classList.remove('mission-acquired');
+                    
+                    NewParagraph.classList.add('Missions');
+                }, 400);
+            }
+            else{
+                NewParagraph.textContent = `${Task}`;
+                NewParagraph.classList.remove('Missions');
+                NewParagraph.classList.add('mission-acquired');
+            }
+        });
+
+        MuralArea.appendChild(NewParagraph);
     });
 
     const MissionList = document.querySelectorAll('.Missions');
