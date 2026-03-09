@@ -1,15 +1,6 @@
-fieldset{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    min-height: auto;
-    background-color: rgba(255, 255, 255, 0.3);
-    border-radius: 2vh;
-    border-style: groove;
-    border-color: rgba(177, 171, 171, 0.6);
-    margin: 0 auto;
-}
+
+/* Seal message and animations */
+
 .seal-msg{
     display: none;
     position: fixed;
@@ -21,24 +12,58 @@ fieldset{
     font-size: 30px;
     font-weight: bold;
     color: rgba(0, 0, 0, 0.966);
-    text-shadow: 0px 0px 5px rgba(255, 215, 0, 0.9);
     margin-bottom: 20px;
+
+    animation: MagicAppearWelcome 2s ease-in-out forwards;
 
 }
 .seal{
+    border-color: transparent;
+    background-color: transparent;
     background-image: url(Seal.png);
     background-size: contain;
     background-repeat: no-repeat;
     width: 250px;
     height: 250px;
+    cursor: pointer;
     display: none;
     position: fixed;
     z-index: 100;
+    border: none;
+    outline: none;
+    background-origin: content-box;
+    -webkit-appearance: none;
+    appearance: none;
+    background-clip: padding-box;
+    animation: MagicPulse 3s infinite ease-in-out;
+}
+.seal:focus {
+    outline: none;
+    border: none;
+}
+.seal:hover{
+    transition: filter 0.3s ease;
+    filter: drop-shadow(0 0 8px rgb(255, 187, 0));
+}
+.logout{
+    display: none;
+    position: fixed;
+    bottom: 30%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    z-index: 101;
+    font-family:'UnifrakturMaguntia', cursive;
+    font-size: 35px;
+    font-weight: bold;
+    color: rgba(0, 0, 0, 0.966);
+    background-color: transparent;
+    border-color: transparent;
+    cursor: pointer;
+    animation: MagicAppearLogout 3s ease-in-out forwards;
+
 }
 
-form{
-
-}
+/* Html Structure */
 
 body{
     display: flex;
@@ -57,33 +82,164 @@ body{
     font-family: 'UnifrakturMaguntia', cursive;
     font-size: 16px;
 }
-/*.div-welcome{
-    font-family: "Petit Formal Script", cursive;
-    font-weight: bold;
-    font-size: 16px;
-    color: rgba(255, 255, 255, 0.966);
-    text-shadow: 2px 2px 10px rgb(2, 99, 2), 0 0 1em green, 0 0 0.5em green;
-    border-radius: 5px;
-    text-align: center;
-}*/
 
-.logout{
-    display: none;
-    position: fixed;
-    bottom: 30%;
-    left: 50%;
-    transform: translate(-50%,-50%);
-    z-index: 101;
-    font-family:'UnifrakturMaguntia', cursive;
-    font-size: 35px;
-    font-weight: bold;
-    color: rgba(0, 0, 0, 0.966);
-    text-shadow: 0px 0px 5px rgba(255, 0, 0, 0.9);
-    background-color: transparent;
-    border-color: transparent;
+.body-transition{
+    background-image: url('stone-wall.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    animation: TransitionBtn 1s ease-in-out forwards;
+}
+
+fieldset{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    width: 100%;
+    max-width: 650px;
+    padding: 50px 40px;
+
+    background-color: rgba(255, 255, 255, 0.3);
+    border-radius: 30px;
+    border-style: groove;
+    border-color: rgba(177, 171, 171, 0.6);
+
+}
+
+.btn{
+    font-family: 'UnifrakturMaguntia', cursive;
+    font-size: 22px;
+    text-shadow: 2px 2px rgba(255, 255, 255, 0.6);
+    box-shadow: 5px 5px 10px rgba(234, 210, 158, 1);
     cursor: pointer;
     transition: 0.3s;
+    border-radius: 10px;
+    padding: 15px 20px;
+    border-color: rgba(255, 255, 255, 0.5);
 }
+
+legend{
+    background-color: rgba(255, 255, 255, 0.5);
+    text-shadow: 0.5px 0.5px white;
+    color: black;
+    border-radius: 50%;
+    border-color: rgba(177, 171, 171, 0.6);
+    border-style: outset;  
+    border-width: 0.06cm;
+    font-weight: bold; 
+    margin: 0 auto;
+    padding: 15px 25px;
+    font-size: 28px;
+}
+
+label{
+    text-shadow: 0.5px 0.5px white;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+input{
+    vertical-align: 0 auto;
+    border-radius: 5px;
+    background-color: rgba(177, 171, 171, 0.3);
+    border-style: inset;
+    border-color: rgba(177, 171, 171, 0.4);
+    font-family: "Petit Formal Script", cursive;
+    font-weight: bold;
+    font-style: normal;
+    font-size: 20px;
+    padding: 12px 15px;
+}
+
+.campo-flex{
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    margin-bottom: 25px;
+}
+
+.petit-formal-script-regular {
+  font-family: "Petit Formal Script", cursive;
+  font-weight: 400;
+  font-style: normal;
+}
+
+/* Task Board and missions */
+
+.Mural{
+    background-image: url('wooden-board.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100% 100%;
+    min-height: 800px;
+    padding: 80px 80px;
+    min-width: none;
+    filter: blur(5);
+    animation: TransitionBtn 1s ease-in-out forwards;
+}
+
+h3{
+    background-image: url('Plank.png');
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-position: center;
+
+    font-weight: bold;
+    width: fit-content;
+    margin: 0 auto 30px auto;
+
+    padding: 20px 60px;
+    filter: drop-shadow(0px 15px 10px rgba(0, 0, 0, 0.7));
+
+    font-size: 30px;
+    text-align: center;
+    
+    color: #241107;
+    -webkit-text-stroke: 0.5px #000000;
+    text-shadow: 0px -1px 2px rgba(0, 0, 0, 0.8), 0px 1px 1px rgba(255, 255, 255, 0.397);
+
+
+}
+
+.Missions{
+    position: relative;
+    font-family: "Petit Formal Script", cursive;
+    font-size: 20px;
+    font-weight: bold;
+    padding: 0 10px;
+
+    color: #000000;
+    -webkit-text-stroke: 0.000001px #ffffff;
+    text-shadow: 0px 1px 10px rgb(0, 219, 201);
+    cursor: pointer;
+    --x: 50%;
+    --y: 50%;
+}
+.Missions::before{
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 0 10px;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    pointer-events: none;
+
+    color: #000000;
+    -webkit-text-stroke: 0.000001px #ffffff;
+    text-shadow: 0px 1px 10px rgb(153, 207, 2);
+
+    clip-path: circle(40px at var(--x) var(--y));
+    transition: clip-path 0.1s ease-out;
+}
+.Missions:not(:hover)::before{
+    clip-path: circle(0px at var(--x) var(--y));
+}
+
+/* Messages for sucess and error in the forms */
 
 .success-msg{
     font-family: "Petit Formal Script", cursive;
@@ -101,11 +257,14 @@ body{
     font-weight: bold;
     font-size: 16px;
     color: rgba(255, 255, 255, 0.966);
-    text-shadow: 2px 2px 10px rgb(99, 2, 2), 0 0 1em rgb(128, 0, 0), 0 0 0.5em rgb(128, 0, 0);
     border-radius: 5px;
     text-align: center;
     margin-bottom: 20px;
     width: 100%;
+    animation: TransitionError 1s ease-in-out forwards;
+}
+.error-msg:hover{
+    transition: 2s
 }
 .vanish{
     display: none;
@@ -113,81 +272,94 @@ body{
 
 /* Magic (submit) button */
 .magic-button{
-    transition: 0.5s;
     background-color: rgba(88, 90, 84, 0.35);
     border-style: solid;
     box-shadow: 0px 0px 15px rgba(10, 255, 150, 0.5);
+    animation: TransitionBtn 1s ease-in-out forwards;
 }
 .magic-button:hover{
+    transition: 2s;
     background-color: rgba(88, 90, 84, 0.5);
     border-style: groove;
     box-shadow: 0px 0px 15px rgba(10, 255, 150, 1);
     text-shadow: 0px 0px 5px rgba(90, 235, 6, 1);
 }
 
-
-/*Goblin (reset) button*/
+/* Goblin (reset) button */
 .goblin-button{
-    transition: 0.5s;
     background-color: rgba(88, 90, 84, 0.35);
     border-style: solid;
     box-shadow: 0px 0px 15px rgba(88, 90, 84, 0.5);
+    animation: TransitionBtn 1.5s ease-in-out forwards;
 }
 .goblin-button:hover{
+    transition: 2s;
     background-color: rgba(88, 90, 84, 0.5);
     border-style: groove;
     box-shadow: 0px 0px 15px rgb(117, 2, 1);
     text-shadow: 0px 0px 5px rgba(231, 6, 6, 1);
 }
 
-button{
-    font-family: 'UnifrakturMaguntia', cursive;
-    font-size: 16px;
-    text-shadow: 2px 2px rgba(255, 255, 255, 0.6);
-    box-shadow: 5px 5px 10px rgba(234, 210, 158, 1);
-    cursor: pointer;
-    transition: 0.3s;
-    border-radius: 10px;
-    border-color: rgba(255, 255, 255, 0.5);
+/*---ANIMATIONS---*/
+
+@keyframes MagicPulse{
+    0%{
+        filter: drop-shadow(0 0 5px rgba(255, 187, 0, 0.3));
+        transform: translate(-50%, -50%) scale(1);
+    }
+    50%{
+        filter: drop-shadow(0 0 25px rgba(255, 187, 0, 1));
+        transform: translate(-50%, -50%) scale(1.03);
+    }
+    100%{
+        filter: drop-shadow(0 0 5px rgba(255, 187, 0, 0.3));
+        transform: translate(-50%, -50%) scale(1);
+    }
 }
 
-legend{
-    padding-left: 43px;
-    padding-right: 30px;
-    text-shadow: 0.5px 0.5px white;
-    color: black;
-    border-radius: 5px;
-    border-color: rgba(177, 171, 171, 0.6);
-    border-style: outset;  
-    border-width: 0.06cm;
-    font-weight: bold; 
+@keyframes MagicAppearWelcome{
+    0%{
+        opacity: 0;
+        filter: blur(5px) drop-shadow(0 0 5px rgba(255, 215, 0, 0.5));
+    }
+    100%{
+        opacity: 1;
+        filter: blur(0px) drop-shadow(0 0 5px rgba(255, 215, 0, 0.9));
+
+    }
+
 }
 
-label{
-    text-shadow: 0.5px 0.5px white;
-    font-weight: bold;
+@keyframes MagicAppearLogout{
+    0%{
+        opacity: 0;
+        filter: blur(5px) drop-shadow( 0 0 5px rgba(255, 0, 0, 0.5));
+    }
+    100%{
+        opacity: 1;        
+        filter: blur(0px) drop-shadow( 0 0 5px rgba(255, 0, 0, 0.9));
+    }
+
 }
 
-input{
-    vertical-align: 0 auto;
-    border-radius: 5px;
-    background-color: rgba(177, 171, 171, 0.3);
-    border-style: inset;
-    border-color: rgba(177, 171, 171, 0.4);
-    font-family: "Petit Formal Script", cursive;
-    font-weight: bold;
-    font-style: normal;
+@keyframes TransitionBtn{
+    0%{
+        opacity: 0;
+        filter: blur(5px);
+    }
+    100%{
+        opacity: 1;
+        filter: blur(0px);
+    }
 }
 
-.campo-flex{
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    margin-bottom: 25px;
-}
-
-.petit-formal-script-regular {
-  font-family: "Petit Formal Script", cursive;
-  font-weight: 400;
-  font-style: normal;
+@keyframes TransitionError{
+    0%{
+        opacity: 0;
+        filter: blur(5px) drop-shadow(0 0 5px rgba(99, 2, 2, 0.5));
+    }
+    100%{
+        opacity: 1;
+        filter: blur(0px) drop-shadow(0 0 5px rgba(99, 2, 2, 1));
+    }
 }

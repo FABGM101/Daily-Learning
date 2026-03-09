@@ -1,11 +1,21 @@
 const formulario = document.querySelector('form');
 const elementoMensagem = document.getElementById('welcome');
+
+const selobtn = document.getElementById('btn-enter');
 const selo = document.querySelector('.seal');
 const selomsg = document.querySelector('.seal-msg');
 const seloMensagem = document.getElementById('seal-msg');
 const heroiSalvo = localStorage.getItem('heroiReg');
 const emailSalvo = localStorage.getItem('emailReg');
 const logout = document.getElementById('btn-logout');
+const BodyBackground = document.getElementById('body-a');
+const MuralArea = document.getElementById('mural');
+const TaskMural = [
+    "Derrote os goblins na caverna ao norte de Voidsky",
+    "Ajude o rei de Kylmane com os protestos em prol dos não-humanos",
+    "Entregue a carta da guilda dos mercadores nas províncias de Ilbath",
+    "Faça essas malditas crianças pararem de jogar pedras nas corujas (Mais 50GL por criança jogada na fonte)"    
+];
 
 if(heroiSalvo && emailSalvo){
     formulario.classList.add('vanish');
@@ -18,6 +28,31 @@ if(heroiSalvo && emailSalvo){
     ShowSeal();
     SealMsgWelcomeBack();
 }
+selobtn.addEventListener('click', function(){
+    selo.style.display = 'none';
+    seloMensagem.style.display = 'none';
+    logout.style.display = 'none';
+    MuralArea.classList.remove('vanish');
+    MuralArea.classList.add('Mural');
+    BodyBackground.classList.add('body-transition'); 
+    
+    MuralArea.innerHTML = "<h3>Mural de missões disponíveis:</h3>";
+    TaskMural.forEach(function(Task){
+        MuralArea.innerHTML += `<p class="Missions" data-text="🪶${Task}">🪶${Task}</p>`;
+    });
+
+    const MissionList = document.querySelectorAll('.Missions');
+    MissionList.forEach(missao => {
+        missao.addEventListener('mousemove', (evento) => {
+            const retangulo = missao.getBoundingClientRect();
+            const x = evento.clientX - retangulo.left;
+            const y = evento.clientY - retangulo.top;
+
+            missao.style.setProperty('--x', `${x}px`);
+            missao.style.setProperty('--y', `${y}px`);
+        });
+    });
+});
 
 function ShowSeal() {
 selo.style.display = 'block';
@@ -39,20 +74,20 @@ formulario.addEventListener('submit', function(evento){
     const campoNome = document.getElementById('name');
     const campoEmail = document.getElementById('email');
     if(campoNome.value === ""){
-        elementoMensagem.classList.remove('success-msg');
+        elementoMensagem.classList.remove('vanish');
         elementoMensagem.classList.add('error-msg');
         elementoMensagem.innerHTML = `Opa Opa Opa, aonde você pensa que vai sem um nome? GUARDAS!`
         setTimeout(function(){
             elementoMensagem.innerHTML = ``;
             elementoMensagem.classList.remove('error-msg');
-        }, 3000);
+        }, 5000);
     }else if (campoEmail.value === ""){
-        elementoMensagem.classList.remove('success-msg');
+        elementoMensagem.classList.remove('vanish');
         elementoMensagem.classList.add('error-msg');
         elementoMensagem.innerHTML = `Ei! ${campoNome.value}! Sem um endereço, não temos para onde mandar as coru- <br>
                                         Larguem elas! Malditos pivetes...`
     }else{
-        elementoMensagem.classList.remove('error-msg');
+        elementoMensagem.classList.remove('vanish');
         elementoMensagem.classList.add('success-msg');
         elementoMensagem.innerHTML = `Bem vindo a guilda, ${campoNome.value}! <br>
                                     Enviaremos uma coruja para ${campoEmail.value},
