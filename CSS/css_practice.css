@@ -72,11 +72,12 @@ body{
     align-items: center;
     min-height: 100vh;
     margin: 0 auto;
+    width: 100% auto;
     
-    background-image: url('rugged-paper.jpg');
+    background-image: linear-gradient(rgba(0,0,0,0.35),rgba(0,0,0,0.35)), url('rugged-paper.jpg');
     background-size: cover;
     background-repeat: no-repeat;
-    background-position: center;
+
     
 
     font-family: 'UnifrakturMaguntia', cursive;
@@ -201,12 +202,84 @@ h3{
 
 }
 
+/*Mission Zone*/
+
+#mission-zone{
+    max-height: 350px;
+    width: 90%;
+    margin: 0 auto;
+    overflow-y: scroll;
+    padding-right: 30px;
+
+
+
+}
+
+#mission-zone::-webkit-scrollbar{
+    width: 25px;
+}
+
+#mission-zone::-webkit-scrollbar-track{
+    background-color: rgba(65, 28, 9, 0.4);
+    background-image: linear-gradient(rgba(65, 28, 9, 0.85), rgba(65, 28, 9, 0.85)), url(chain.png);
+    background-color: opacity(0.5);
+    background-size: 100% auto;
+    border-radius: 10px;
+    border-color: #30190c;
+
+    box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.8);
+}
+
+#mission-zone::-webkit-scrollbar-thumb{
+    background-image: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)), url('chain.png');
+    width: fit-content;
+
+    background-size: 100% auto;
+    background-repeat: repeat-y;
+    border-radius: 10px;
+    border: 1px  rgba(65, 28, 9, 0.8);
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5);
+}
+
+#mission-zone::-webkit-scrollbar-thumb:hover{
+    filter: brightness(1.2);
+}
+
+.del-btn{
+    border-color: transparent;
+    background-color: transparent;
+    background-image: url(Fire.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+    background-position: center;
+    image-rendering: pixelated;
+
+}
+.del-btn:hover{
+    animation: Fire 2s infinite ease-in-out ;
+}
+
+.mission-box{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 15px;
+
+}
+
 .Missions{
     position: relative;
     font-family: "Petit Formal Script", cursive;
     font-size: 20px;
     font-weight: bold;
     padding: 0 10px;
+    margin: 0;
+    width: 95%;
 
     color: #000000;
     -webkit-text-stroke: 0.000001px #ffffff;
@@ -265,6 +338,8 @@ h3{
     animation: RevertAcquired 1s ease forwards !important;
 }
 
+/*Add Mission*/
+
 .newmission{
     min-height: 500px;
     margin: 10px;
@@ -279,9 +354,7 @@ h3{
     background-color: rgba(133, 96, 61, 0.1);
 }
 .newmission fieldset{
-    border: 5px dashed  #30190c;
     background-color: transparent;
-    border-radius: 10px;
 
     display: flex;
     flex-direction: column;
@@ -294,6 +367,19 @@ h3{
     width: 100%;
     max-width: 650px;
     padding: 30px 30px;
+
+    border: 2px solid #30190c;
+
+    background-image: url(chain.png), url(chain.png);
+
+    background-position: left center, right center;
+
+    background-repeat: repeat-y, repeat-y;
+
+    background-size: 20px auto, 20px auto;
+
+    padding: 30px 50px;
+
 }
 .newmission button{
     display: flex;
@@ -312,12 +398,12 @@ h3{
     margin: 0 auto 30px auto;
 
     padding: 20px 60px;
-    filter: drop-shadow(0px 15px 10px rgba(0, 0, 0, 0.7));
+    filter: contrast(95%) drop-shadow(0px 15px 10px rgba(0, 0, 0, 0.7));
 
     font-size: 30px;
     text-align: center;
     
-    color: #241107;
+    color: rgb(36, 17, 7);
     -webkit-text-stroke: 0.5px #000000;
     text-shadow: 0px -1px 2px rgba(0, 0, 0, 0.8), 0px 1px 1px rgba(255, 255, 255, 0.397);
 }
@@ -331,6 +417,11 @@ h3{
     background-size: 100% 100%;
     background-position: center;
     padding: 20px 15px;
+
+    border-color: transparent;
+    border: none;
+
+    filter: contrast(95%)  drop-shadow(0px 15px 10px rgba(0, 0, 0, 0.7));
 
     font-weight: bold;
     width: fit-content;
@@ -374,9 +465,9 @@ h3{
 
 /* Magic (submit) button */
 .magic-button{
-    background-color: rgba(88, 90, 84, 0.35);
-    border-style: solid;
-    box-shadow: 0px 0px 15px rgba(10, 255, 150, 0.5);
+    background-color: rgba(10, 255, 150, 0.05);
+    border-color: transparent;
+    box-shadow: 0px 0px 15px rgba(10, 255, 150, 0.25);
     animation: TransitionBtn 1s ease-in-out forwards;
 }
 .magic-button:hover{
@@ -403,6 +494,28 @@ h3{
 }
 
 /*---ANIMATIONS---*/
+
+@keyframes Fire{
+    0%{
+        transform: scale(1);
+    }
+
+    25%{
+        transform: scale(1.1);
+    }
+
+    50%{
+        transform: scale(1.2);
+    }
+
+    75%{
+        transform: scale(1.1);
+    }
+
+    100%{
+        transform: scale(1);
+    }
+}
 
 @keyframes MagicPulse{
     0%{

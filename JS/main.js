@@ -19,7 +19,7 @@ const logout = document.getElementById('btn-logout');
 const BodyBackground = document.getElementById('body-a');
 const MuralArea = document.getElementById('mural');
 
-const TaskMural = [
+let TaskMural = JSON.parse(localStorage.getItem('SavedMissions')) || [
     "Derrote os goblins na caverna ao norte de Voidsky",
     "Ajude o rei de Kylmane com os protestos em prol dos não-humanos",
     "Entregue a carta da guilda dos mercadores nas províncias de Ilbath",
@@ -44,6 +44,8 @@ selobtn.addEventListener('click', function(){
     MuralArea.classList.remove('vanish');
     MuralArea.classList.add('Mural');
     BodyBackground.classList.add('body-transition'); 
+
+
     
     const MissionMural = document.createElement('h3');
     MissionMural.textContent = 'Mural de missões';
@@ -54,10 +56,26 @@ selobtn.addEventListener('click', function(){
 
     TaskMural.forEach(function(Task){
         const NewParagraph = document.createElement('p');
+
+        const MissionBox = document.createElement('div');
+        MissionBox.classList.add('mission-box');
         
         NewParagraph.textContent = `🪶${Task}`;
         NewParagraph.classList.add('Missions');
         NewParagraph.dataset.text = `🪶${Task}`;
+
+
+        const DelBtn = document.createElement('button');
+        DelBtn.textContent = '';
+        DelBtn.classList.add('del-btn');
+        DelBtn.addEventListener('click', function(){
+            MissionBox.remove();
+
+            TaskMural = TaskMural.filter(mission => mission !== Task);
+
+            localStorage.setItem('SavedMissions', JSON.stringify(TaskMural));
+        });
+
 
         NewParagraph.addEventListener('click', function(){
 
@@ -80,7 +98,10 @@ selobtn.addEventListener('click', function(){
             }
         });
 
-        MissionZone.appendChild(NewParagraph);
+        MissionBox.appendChild(NewParagraph);
+        MissionBox.appendChild(DelBtn);
+
+        MissionZone.appendChild(MissionBox);
     });
 
     const MissionList = document.querySelectorAll('.Missions');
@@ -152,6 +173,8 @@ formulario.addEventListener('reset', function(evento){
 
 });
 
+
+
 NewMissionClass.addEventListener('submit', function(evento){
     evento.preventDefault();
 
@@ -165,6 +188,20 @@ NewMissionClass.addEventListener('submit', function(evento){
     NewParagraph.textContent = `🪶${textMission}`;
     NewParagraph.classList.add('Missions');
     NewParagraph.dataset.text = `🪶${textMission}`;
+
+    const MissionBox = document.createElement('div');
+    MissionBox.classList.add('mission-box');
+
+    const DelBtn = document.createElement('button');
+    DelBtn.textContent = '';
+    DelBtn.classList.add('del-btn');
+    DelBtn.addEventListener('click', function(){
+        MissionBox.remove();
+
+        TaskMural = TaskMural.filter(mission => mission !== textMission);
+
+        localStorage.setItem('SavedMissions', JSON.stringify(TaskMural));
+    });
 
     NewParagraph.addEventListener('click', function(){
 
@@ -198,7 +235,13 @@ NewMissionClass.addEventListener('submit', function(evento){
 
         
     const MissionZone = document.getElementById('mission-zone');
-    MissionZone.appendChild(NewParagraph);
+    TaskMural.push(textMission);
+    localStorage.setItem('SavedMissions', JSON.stringify(TaskMural));
+
+    MissionBox.appendChild(NewParagraph);
+    MissionBox.appendChild(DelBtn);
+
+    MissionZone.appendChild(MissionBox);
     NewMission.value = '';
 
 
