@@ -6,3 +6,7 @@ PostgreSql/
 *.sql
 *.png
 *.jpg
+*.code-workspace
+venv/
+python-basic/
+__pycache__/

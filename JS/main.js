@@ -37,7 +37,7 @@ if(heroiSalvo && emailSalvo){
     ShowSeal();
     SealMsgWelcomeBack();
 }
-selobtn.addEventListener('click', function(){
+selobtn.addEventListener('click', async function(){
     selo.style.display = 'none';
     seloMensagem.style.display = 'none';
     logout.style.display = 'none';
@@ -54,67 +54,77 @@ selobtn.addEventListener('click', function(){
     const MissionZone = document.getElementById('mission-zone');
 
 
-    TaskMural.forEach(function(Task){
-        const NewParagraph = document.createElement('p');
-
-        const MissionBox = document.createElement('div');
-        MissionBox.classList.add('mission-box');
+    try {
+        const answer = await fetch('http://127.0.0.1:8000/missions');
         
-        NewParagraph.textContent = `🪶${Task}`;
-        NewParagraph.classList.add('Missions');
-        NewParagraph.dataset.text = `🪶${Task}`;
+        const ServerMissions = await answer.json();
+
+        ServerMissions.forEach(function(mission){
+            const NewParagraph = document.createElement('p');
+
+            const MissionBox = document.createElement('div');
+            MissionBox.classList.add('mission-box');
+        
+            NewParagraph.textContent = `🪶${mission.texto}`;
+            NewParagraph.classList.add('Missions');
+            NewParagraph.dataset.text = `🪶${mission.texto}`;
 
 
-        const DelBtn = document.createElement('button');
-        DelBtn.textContent = '';
-        DelBtn.classList.add('del-btn');
-        DelBtn.addEventListener('click', function(){
+            const DelBtn = document.createElement('button');
+            DelBtn.textContent = '';
+            DelBtn.classList.add('del-btn');
+            DelBtn.addEventListener('click', function(){
             MissionBox.remove();
 
-            TaskMural = TaskMural.filter(mission => mission !== Task);
+            ServerMissions = ServerMissions.filter(mission => mission !== mission);
 
-            localStorage.setItem('SavedMissions', JSON.stringify(TaskMural));
-        });
+            localStorage.setItem('SavedMissions', JSON.stringify(ServerMissions));
+            });
 
 
-        NewParagraph.addEventListener('click', function(){
+            NewParagraph.addEventListener('click', function(){
 
-            if(NewParagraph.classList.contains('mission-acquired')){
+                if(NewParagraph.classList.contains('mission-acquired')){
 
-                NewParagraph.classList.add('revert-acquired');
+                    NewParagraph.classList.add('revert-acquired');
 
-                setTimeout(function(){
-                    NewParagraph.textContent = `🪶${Task}`;
-                    NewParagraph.classList.remove('revert-acquired');
-                    NewParagraph.classList.remove('mission-acquired');
+                    setTimeout(function(){
+                        NewParagraph.textContent = `🪶${mission.texto}`;
+                        NewParagraph.classList.remove('revert-acquired');
+                        NewParagraph.classList.remove('mission-acquired');
                     
-                    NewParagraph.classList.add('Missions');
-                }, 400);
-            }
-            else{
-                NewParagraph.textContent = `${Task}`;
-                NewParagraph.classList.remove('Missions');
-                NewParagraph.classList.add('mission-acquired');
-            }
+                        NewParagraph.classList.add('Missions');
+                    }, 400);
+                }
+                else{
+                    NewParagraph.textContent = `${mission.texto}`;
+                    NewParagraph.classList.remove('Missions');
+                    NewParagraph.classList.add('mission-acquired');
+                }
+            });
+
+            MissionBox.appendChild(NewParagraph);
+            MissionBox.appendChild(DelBtn);
+
+            MissionZone.appendChild(MissionBox);
         });
 
-        MissionBox.appendChild(NewParagraph);
-        MissionBox.appendChild(DelBtn);
+        const MissionList = document.querySelectorAll('.Missions');
+        MissionList.forEach(missao => {
+            missao.addEventListener('mousemove', (evento) => {
+                const retangulo = missao.getBoundingClientRect();
+                const x = evento.clientX - retangulo.left;
+                const y = evento.clientY - retangulo.top;
 
-        MissionZone.appendChild(MissionBox);
-    });
-
-    const MissionList = document.querySelectorAll('.Missions');
-    MissionList.forEach(missao => {
-        missao.addEventListener('mousemove', (evento) => {
-            const retangulo = missao.getBoundingClientRect();
-            const x = evento.clientX - retangulo.left;
-            const y = evento.clientY - retangulo.top;
-
-            missao.style.setProperty('--x', `${x}px`);
-            missao.style.setProperty('--y', `${y}px`);
+                missao.style.setProperty('--x', `${x}px`);
+                missao.style.setProperty('--y', `${y}px`);
+            });
         });
-    });
+    
+    } catch (error404) {
+        console.error("Error", error404);
+    }
+
 });
 
 function ShowSeal() {
